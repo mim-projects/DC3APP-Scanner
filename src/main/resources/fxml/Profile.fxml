@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mim.mavenproject1.controller.ProfileController">
+   <children>
+      <VBox prefHeight="501.0" prefWidth="618.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <StackPane fx:id="backgroundParent" prefHeight="497.0" prefWidth="620.0" style="-fx-background-color: gray;">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <AnchorPane fx:id="anchorParent">
+                           <children>
+                              <ImageView fx:id="header" fitHeight="143.0" fitWidth="620.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <StackPane fx:id="stackProfile" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="200.0">
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding></StackPane>
+                  <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 9;">
+                           <children>
+                              <Text fx:id="nombreField" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="*************************">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="puestoField" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="*******************">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="areaField" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="*************">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="40.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </StackPane>
+            <AnchorPane fx:id="genPane" prefHeight="340.0" prefWidth="619.0">
+               <children>
+                  <StackPane fx:id="genStack" layoutX="7.0" layoutY="9.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="9.0">
+                     <children>
+                        <VBox fx:id="card" prefHeight="200.0" prefWidth="100.0" spacing="4.0">
+                           <children>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="empresaField" strokeType="OUTSIDE" strokeWidth="0.0" text="****************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NSS:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="socialField" strokeType="OUTSIDE" strokeWidth="0.0" text="***************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Estatus:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="estatusField" strokeType="OUTSIDE" strokeWidth="0.0" text="***************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Acceso:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="accesoField" strokeType="OUTSIDE" strokeWidth="0.0" text="***************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zona:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="plantaField" strokeType="OUTSIDE" strokeWidth="0.0" text="**************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="35.0" prefWidth="592.0" style="-fx-spacing: 9;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Horario">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="horarioField" strokeType="OUTSIDE" strokeWidth="0.0" text="***************">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
