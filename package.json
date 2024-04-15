@@ -1,0 +1,28 @@
+{
+    "bin": {"mavenproject1": "jdeploy-bundle/jdeploy.js"},
+    "author": "mimsoft",
+    "description": "DC3APP Scanner",
+    "main": "index.js",
+    "preferGlobal": true,
+    "repository": "https://github.com/mim-projects/DC3APP-Scanner",
+    "version": "1.0.0",
+    "jdeploy": {
+        "jdk": false,
+        "javaVersion": "11",
+        "jar": "target/mavenproject1-1.0.0-shaded.jar",
+        "javafx": true,
+        "title": "DC3APP"
+    },
+    "dependencies": {
+        "command-exists-promise": "^2.0.2",
+        "node-fetch": "2.6.7",
+        "tar": "^4.4.8",
+        "yauzl": "^2.10.0",
+        "shelljs": "^0.8.4"
+    },
+    "license": "ISC",
+    "name": "DC3APP Scanner",
+    "files": ["jdeploy-bundle"],
+    "scripts": {"test": "echo \"Error: no test specified\" && exit 1"},
+    "homepage": ""
+}
