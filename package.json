@@ -7,7 +7,7 @@
     "repository": "https://github.com/mim-projects/DC3APP-Scanner",
     "version": "1.0.0",
     "jdeploy": {
-        "jdk": true,
+        "jdk": false,
         "javaVersion": "11",
         "jar": "target/mavenproject1-1.0.0-jar-with-dependencies.jar",
         "javafx": true,
