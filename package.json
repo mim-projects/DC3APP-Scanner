@@ -9,7 +9,7 @@
     "jdeploy": {
         "jdk": false,
         "javaVersion": "11",
-        "jar": "target/mavenproject1-1.0.0-shaded.jar",
+        "jar": "target/mavenproject1-1.0.0.jar",
         "javafx": true,
         "title": "DC3APP"
     },
