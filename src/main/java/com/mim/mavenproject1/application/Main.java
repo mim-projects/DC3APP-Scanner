@@ -16,8 +16,6 @@ import com.mim.models.IngresoDTO;
 import com.mim.models.Trabajador;
 import com.mim.mavenproject1.util.GlobalKeyListenerExample;
 import com.mim.util.MasterView;
-//import com.mim.util.api.IngresoAPI;
-//import com.mim.util.api.TrabajadorAPI;
 import com.mim.mavenproject1.util.interfaces.Command;
 import java.io.IOException;
 import java.net.URI;
@@ -25,8 +23,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -38,9 +34,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javax.security.auth.spi.LoginModule;
 import com.fazecast.jSerialComm.SerialPort;
 import com.mim.mavenproject1.util.IndicatorWatcher;
+import com.mim.mavenproject1.util.SerialPortDTO;
 import com.mim.mavenproject1.util.Singleton;
 import com.mim.mavenproject1.util.Watcher;
 import com.mim.mavenproject1.util.interfaces.WatcherCommand;
@@ -91,6 +87,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
     private String keyResult;
     private SerialPort port;
     private List<SerialPort> portList = new ArrayList<>();
+    private boolean ignore = false;
 
     private String matchName;
 
@@ -230,6 +227,12 @@ public class Main extends Application implements ProfileController.OnViewInterac
     @Override
     public void showAboutPage(String codigo) {
         //System.out.println("Laura..... ");
+
+        if (ignore) {
+            System.out.println("ignorando codigo.....");
+            return;
+        }
+        ignore = true;
         if (mainStage.isFocused()) {
             commandLayout.closeNavigationDrawer();
         }
@@ -346,8 +349,9 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
     }
 
-    public boolean openSelectedPort(String portName) {
+    public boolean openSelectedPort(SerialPortDTO current) {
         try {
+            String portName = current.getPortName();
             System.out.println("Vamos a intentar abir el puerto: " + portName);
             port = SerialPort.getCommPort(portName);
             saveSelectedPort(portName);
@@ -575,25 +579,29 @@ public class Main extends Application implements ProfileController.OnViewInterac
     @Override
     public void turnOnGreenIndicator() {
 
-        turnOnGreenLight();
+        // turnOnGreenLight();
+        turnOnRedLight();
     }
 
     @Override
     public void turnOffGreenIndicator() {
 
-        turnOffGreenLight();
+        //turnOffGreenLight();
+        turnOffRedLight();
     }
 
     @Override
     public void turnOnRedIndicator() {
 
-        turnOnRedLight();
+        //turnOnRedLight();
+        turnOnGreenLight();
     }
 
     @Override
     public void turnOffRedIndicator() {
 
-        turnOffRedLight();
+        //turnOffRedLight();
+        turnOffGreenLight();
     }
 
     @Override
@@ -602,22 +610,22 @@ public class Main extends Application implements ProfileController.OnViewInterac
     }
 
     @Override
-    public List<String> retrievePortsNames() {
+    public List<SerialPortDTO> retrievePortsNames() {
         if (portList == null) {
             return new ArrayList<>();
         }
         if (portList.isEmpty()) {
-            //List<String> temp = new ArrayList<>();
-            //temp.add("test");
-            return new ArrayList<>();
-            //return temp;
+            List<SerialPortDTO> temp = new ArrayList<>();
+            temp.add(new SerialPortDTO("test", "test"));
+            //return new ArrayList<>();
+            return temp;
         }
 
-        List<String> names = new ArrayList<>();
+        List<SerialPortDTO> names = new ArrayList<>();
 
         System.out.println("ports list names size: " + portList.size());
         for (SerialPort serialPort : portList) {
-            names.add(serialPort.getSystemPortName());
+            names.add(new SerialPortDTO(serialPort.getSystemPortName(), serialPort.getPortDescription()));
         }
         return names;
     }
@@ -677,7 +685,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
                     System.out.println("Final result: " + res.toString() + " size: " + res.toString().length());
                     if (!res.toString().isBlank()) {
-                        if (!openSelectedPort(res.toString())) {
+                        if (!openSelectedPort(new SerialPortDTO(res.toString(), res.toString()))) {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
@@ -712,6 +720,11 @@ public class Main extends Application implements ProfileController.OnViewInterac
         final IndicatorWatcher watcher = new IndicatorWatcher(Main.this);
         commandIndicatorsListener = (WatcherCommand) watcher;
         new Thread(watcher).start();
+    }
+
+    @Override
+    public void resumeListener() {
+        ignore = false;
     }
 
 }
