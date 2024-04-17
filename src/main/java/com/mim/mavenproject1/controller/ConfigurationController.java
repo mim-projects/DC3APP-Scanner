@@ -6,6 +6,7 @@ package com.mim.mavenproject1.controller;
 
 import com.jfoenix.controls.JFXSnackbar;
 import com.mim.mavenproject1.application.Main;
+import com.mim.mavenproject1.util.SerialPortDTO;
 import com.mim.mavenproject1.util.interfaces.Command;
 import com.mim.models.IngresoDTO;
 import com.mim.models.Trabajador;
@@ -52,7 +53,7 @@ public class ConfigurationController extends MasterView implements Initializable
     @FXML
     private Button backBtnMain;
     @FXML
-    private ComboBox<String> portsField;
+    private ComboBox<SerialPortDTO> portsField;
 
     private OnViewInteractionListener mListener;
 
@@ -176,9 +177,9 @@ public class ConfigurationController extends MasterView implements Initializable
     }
 
     private void setUpUI() {
-        List<String> res = mListener.retrievePortsNames();
+        List<SerialPortDTO> res = mListener.retrievePortsNames();
         if (!res.isEmpty()) {
-            for (String re : res) {
+            for (SerialPortDTO re : res) {
                 portsField.getItems().add(re);
             }
         }
@@ -196,9 +197,9 @@ public class ConfigurationController extends MasterView implements Initializable
 
         public void showMainLayout();
 
-        public List<String> retrievePortsNames();
+        public List<SerialPortDTO> retrievePortsNames();
 
-        public boolean openSelectedPort(String port);
+        public boolean openSelectedPort(SerialPortDTO port);
     }
 
 }

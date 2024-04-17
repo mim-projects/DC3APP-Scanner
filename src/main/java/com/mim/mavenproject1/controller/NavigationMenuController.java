@@ -93,6 +93,7 @@ public class NavigationMenuController extends MasterView implements Initializabl
     public interface OnViewInteractionListener {
 
         public void loadUsbPorts();
+
         public void showAboutPage(String codigo);
 
         // public void showConfigPage();

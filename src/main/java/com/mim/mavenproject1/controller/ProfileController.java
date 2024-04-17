@@ -167,6 +167,15 @@ public class ProfileController extends MasterView implements Initializable, Comm
                 ft.setFromValue(0.0);
                 ft.setToValue(1.0);
                 ft.play();
+                ft.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent t) {
+                       if(mListener!=null){
+                           mListener.resumeListener();
+                       }
+                    }
+
+                });
             }
 
         });
@@ -223,8 +232,10 @@ public class ProfileController extends MasterView implements Initializable, Comm
         public void turnOnRedIndicator();
 
         public void turnOffRedIndicator();
-        
-        public  void retrieveSavedPort();
+
+        public void retrieveSavedPort();
+
+        public void resumeListener();
     }
 
 }
