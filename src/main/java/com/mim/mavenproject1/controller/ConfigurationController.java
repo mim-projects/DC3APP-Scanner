@@ -41,14 +41,14 @@ import javafx.scene.text.Text;
  * @author marcoisaacvazquezgutierrez
  */
 public class ConfigurationController extends MasterView implements Initializable, Command {
-
+    
     @FXML
     private StackPane mainStack;
     @FXML
     private Button backBtnMain;
     @FXML
     private ComboBox<SerialPortDTO> portsField;
-
+    
     private OnViewInteractionListener mListener;
 
     /**
@@ -69,20 +69,20 @@ public class ConfigurationController extends MasterView implements Initializable
         backBtnMain.setText("");
         //Set the image to the top
         backBtnMain.setContentDisplay(ContentDisplay.TOP);
-
+        
     }
-
+    
     @Override
     public void attach(Main main) {
         super.attach(main); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         mListener = (OnViewInteractionListener) main;
     }
-
+    
     @FXML
     public void showMainLayout(MouseEvent event) {
         mListener.showMainLayout();
     }
-
+    
     @FXML
     public void saveConfig(MouseEvent event) {
         if (portsField.getValue() == null) {
@@ -94,45 +94,56 @@ public class ConfigurationController extends MasterView implements Initializable
         } else {
             showNotification("Hubo algun error....", false);
         }
-
+        
     }
-
+    
+    @FXML
+    public void autoDectPort(MouseEvent event) {
+        if (mListener != null) {
+            if (mListener.autoDetectConfig()) {
+                showNotification("Puerto configurado con exito", true);
+            } else {
+                showNotification("No se localizo puerto, Selecciona manualmente.", false);
+            }
+        }
+    }
+    
     @Override
     public void buildContet(Pane content) {
         setUpUI();
     }
-
+    
     @Override
     public void updateInfo(Trabajador trabajador, IngresoDTO ingreso) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public void buildNavigation(Pane navigation) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public void closeNavigationDrawer() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public void removeBlockUI() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public void showNotification(String msg, boolean result) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-
+                
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/notificationMsg.fxml"));
-
+                
                 try {
                     StackPane root = loader.load();
-
+                    
                     Optional<Node> res = root.getChildren().stream().filter(e -> {
                         if (e.getAccessibleText().equals("snackText")) {
                             return true;
@@ -159,17 +170,17 @@ public class ConfigurationController extends MasterView implements Initializable
                 } catch (IOException ex) {
                     Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                
             }
-
+            
         });
     }
-
+    
     @Override
     public void changeBackGroundColr(String color) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     private void setUpUI() {
         portsField.getItems().clear();
         List<SerialPortDTO> res = mListener.retrievePortsNames();
@@ -178,23 +189,25 @@ public class ConfigurationController extends MasterView implements Initializable
                 portsField.getItems().add(re);
             }
         }
-
+        
         portsField.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 System.out.println("selected: " + portsField.getValue());
             }
-
+            
         });
     }
-
+    
     public interface OnViewInteractionListener {
-
+        
         public void showMainLayout();
-
+        
         public List<SerialPortDTO> retrievePortsNames();
-
+        
         public boolean openSelectedPort(SerialPortDTO port);
+        
+        public boolean autoDetectConfig();
     }
-
+    
 }

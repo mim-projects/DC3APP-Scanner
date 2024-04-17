@@ -19,7 +19,7 @@
                             <Font size="18.0" />
                         </font>
                     </Label>
-                    <Button layoutX="244.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#saveConfig" text="Guardar">
+                    <Button layoutX="338.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#saveConfig" text="Guardar">
                         <font>
                             <Font size="24.0" />
                         </font>
@@ -29,6 +29,11 @@
                      <Font size="18.0" />
                   </font>
                </JFXButton>
+               <Button layoutX="124.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#autoDectPort" text="AUTO-DETECT">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Button>
                 </AnchorPane>
                 
             </children>
