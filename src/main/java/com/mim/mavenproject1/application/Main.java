@@ -615,10 +615,10 @@ public class Main extends Application implements ProfileController.OnViewInterac
             return new ArrayList<>();
         }
         if (portList.isEmpty()) {
-            List<SerialPortDTO> temp = new ArrayList<>();
-            temp.add(new SerialPortDTO("test", "test"));
-            //return new ArrayList<>();
-            return temp;
+            //List<SerialPortDTO> temp = new ArrayList<>();
+            //temp.add(new SerialPortDTO("test", "test"));
+            return new ArrayList<>();
+            //return temp;
         }
 
         List<SerialPortDTO> names = new ArrayList<>();
