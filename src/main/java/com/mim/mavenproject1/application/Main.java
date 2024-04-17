@@ -730,4 +730,27 @@ public class Main extends Application implements ProfileController.OnViewInterac
         ignore = false;
     }
 
+    public boolean autoDetectPort() {
+        List<SerialPortDTO> namesList = retrievePortsNames();
+        if (namesList.isEmpty()) {
+            return false;
+        }
+
+        for (SerialPortDTO serialPortDTO : namesList) {
+            if (serialPortDTO.toString().contains("CH340")) {
+                if (openSelectedPort(serialPortDTO)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean autoDetectConfig() {
+        return autoDetectPort();
+    }
+
 }
