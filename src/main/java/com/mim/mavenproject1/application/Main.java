@@ -262,6 +262,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
                         if (mainStage.isFocused()) {
                             commandLayout.removeBlockUI();
                         }
+                        ignore = false;
                         commandLayout.showNotification("Error al recibir informacion....", false);
                         return;
                     }
@@ -302,6 +303,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
                     if (mainStage.isFocused()) {
                         commandLayout.removeBlockUI();
                     }
+                    ignore = false;
                     commandLayout.showNotification("Error al recibir informacion....", false);
 
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -309,6 +311,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
                     if (mainStage.isFocused()) {
                         commandLayout.removeBlockUI();
                     }
+                    ignore = false;
                     commandLayout.showNotification("Error al recibir informacion....", false);
 
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -625,7 +628,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
         System.out.println("ports list names size: " + portList.size());
         for (SerialPort serialPort : portList) {
-            names.add(new SerialPortDTO(serialPort.getSystemPortName(), serialPort.getPortDescription()));
+            names.add(new SerialPortDTO(serialPort.getSystemPortName(), serialPort.getPortDescription(), serialPort.getDescriptivePortName()));
         }
         return names;
     }
@@ -685,7 +688,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
                     System.out.println("Final result: " + res.toString() + " size: " + res.toString().length());
                     if (!res.toString().isBlank()) {
-                        if (!openSelectedPort(new SerialPortDTO(res.toString(), res.toString()))) {
+                        if (!openSelectedPort(new SerialPortDTO(res.toString(), res.toString(), res.toString()))) {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
