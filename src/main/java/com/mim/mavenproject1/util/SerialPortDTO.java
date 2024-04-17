@@ -16,9 +16,12 @@ public class SerialPortDTO implements Serializable {
 
     private String descriptionName;
 
-    public SerialPortDTO(String portName, String descriptionName) {
+    private String otherName;
+
+    public SerialPortDTO(String portName, String descriptionName, String otherName) {
         this.portName = portName;
         this.descriptionName = descriptionName;
+        this.otherName = otherName;
     }
 
     public String getPortName() {
@@ -37,10 +40,18 @@ public class SerialPortDTO implements Serializable {
         this.descriptionName = descriptionName;
     }
 
+    public String getOtherName() {
+        return otherName;
+    }
+
+    public void setOtherName(String otherName) {
+        this.otherName = otherName;
+    }
+
     @Override
     public String toString() {
 
-        return portName + " - " + descriptionName;
+        return portName + " - " + descriptionName + " - " + otherName;
     }
 
 }
