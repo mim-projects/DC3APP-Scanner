@@ -69,11 +69,11 @@ public class NavigationMenuController extends MasterView implements Initializabl
         //mListener.showAboutPage("920685057");
         if (!control) {
             control = true;
-            mListener.showAboutPage("920685057");
+            mListener.showAboutPage("846580521");
             //mListener.turnOnIndicators();
         } else {
             control = false;
-            mListener.showAboutPage("855563013");
+            mListener.showAboutPage("479462761");
             //mListener.turnOffIndicators();
         }
     }

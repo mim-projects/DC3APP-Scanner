@@ -64,7 +64,7 @@ public class Main extends Application implements ProfileController.OnViewInterac
     public static final String LOGIN = "fxml/Login.fxml";
     public static final String CONFIG = "fxml/Configuration.fxml";
 
-    public static final String BASE = "https://dc3-2022.ny-2.paas.massivegrid.net/dc3BackEnd2/webresources/";
+    public static final String BASE = "https://dc3-2022-guadalajara.ny-2.paas.massivegrid.net/dc3BackEnd2/webresources/";
 
     public static void main(String[] args) {
         launch(args);
@@ -143,7 +143,9 @@ public class Main extends Application implements ProfileController.OnViewInterac
                 Singleton.getInstance().clearList();
                 Singleton.getInstance().setControl(false);
                 if (keyResult != null) {
-                    commandIndicatorsListener.restart();
+                    if (commandIndicatorsListener != null) {
+                        commandIndicatorsListener.restart();
+                    }
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
