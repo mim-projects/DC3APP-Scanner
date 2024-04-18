@@ -16,18 +16,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -154,7 +150,7 @@ public class ProfileController extends MasterView implements Initializable, Comm
         if (imgProfile.isError()) {
             imgProfile = new Image(getClass().getClassLoader().getResourceAsStream("man.jpg"));
         }
-        FadeTransition ftOut = new FadeTransition(Duration.millis(1000), circleProfile);
+        FadeTransition ftOut = new FadeTransition(Duration.millis(500), circleProfile);
         ftOut.setFromValue(1);
         ftOut.setToValue(0);
         ftOut.play();
@@ -163,7 +159,7 @@ public class ProfileController extends MasterView implements Initializable, Comm
             @Override
             public void handle(ActionEvent t) {
                 circleProfile.setFill(new ImagePattern(imgProfile));
-                FadeTransition ft = new FadeTransition(Duration.millis(1000), circleProfile);
+                FadeTransition ft = new FadeTransition(Duration.millis(500), circleProfile);
                 ft.setFromValue(0.0);
                 ft.setToValue(1.0);
                 ft.play();
