@@ -6,27 +6,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mim.mavenproject1.controller.NavigationMenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mim.mavenproject1.controller.NavigationMenuController">
     <children>
         <VBox fx:id="vBoxNavigation" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="262.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <StackPane fx:id="stack" prefHeight="164.0" prefWidth="294.0" style="-fx-background-color: #00695c#00695c; -fx-padding: 20;" />
-                <JFXButton fx:id="profileButton" prefHeight="42.0" prefWidth="348.0" text="Perfil" VBox.vgrow="ALWAYS" >
+                <JFXButton fx:id="profileButton" prefHeight="42.0" prefWidth="348.0" text="Perfil" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="configButton" onMouseClicked="#showConfigView" prefHeight="38.0" prefWidth="346.0" text="Configuracion" VBox.vgrow="ALWAYS" >
+                <JFXButton fx:id="configButton" onMouseClicked="#showConfigView" prefHeight="38.0" prefWidth="346.0" text="Configuracion" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="aboutButton" onMouseClicked="#showAboutView" prefHeight="38.0" prefWidth="346.0" text="Acerca de" VBox.vgrow="ALWAYS" >
+                <JFXButton fx:id="aboutButton" onMouseClicked="#showAboutView" prefHeight="38.0" prefWidth="346.0" text="TEST" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="signOutButton" onMouseClicked="#showSignOutView" prefHeight="38.0" prefWidth="346.0" text="Cerrar Sesion" VBox.vgrow="ALWAYS" >
+                <JFXButton fx:id="signOutButton" onMouseClicked="#showSignOutView" prefHeight="38.0" prefWidth="346.0" text="Cerrar Sesion" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="18.0" />
                     </font>
