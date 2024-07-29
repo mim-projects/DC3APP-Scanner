@@ -356,6 +356,11 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
     public boolean openSelectedPort(SerialPortDTO current) {
         try {
+            if(port!=null){
+                if(port.isOpen()){
+                    return true;
+                }
+            }
             String portName = current.getPortName();
             System.out.println("Vamos a intentar abir el puerto: " + portName);
             port = SerialPort.getCommPort(portName);
