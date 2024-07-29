@@ -581,9 +581,13 @@ public class Main extends Application implements ProfileController.OnViewInterac
 
     @Override
     public void turnOffIndicators() {
-        turnOffGreenLight();
-
-        turnOffRedLight();
+        try {
+            turnOffGreenLight();
+            Thread.sleep(200);
+            turnOffRedLight();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
