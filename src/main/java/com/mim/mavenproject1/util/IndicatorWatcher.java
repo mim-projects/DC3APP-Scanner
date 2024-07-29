@@ -34,7 +34,7 @@ public class IndicatorWatcher implements Runnable, WatcherCommand {
             }
             Instant finish = Instant.now();
             Long elapsed = Duration.between(start, finish).toSeconds();
-            if (elapsed > 10) {
+            if (elapsed > 5) {
                 wait = false;
                 if (mListener != null) {
                     mListener.timedOutIndicators();
